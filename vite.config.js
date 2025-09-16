@@ -5,14 +5,8 @@ import tailwindcss from "@tailwindcss/vite";
 export default defineConfig({
   plugins: [react(), tailwindcss()],
   build: {
-    // Otimizações de build
-    minify: "esbuild", // Usar esbuild em vez de terser para evitar problemas
-    // terserOptions: {
-    //   compress: {
-    //     drop_console: true,
-    //     drop_debugger: true,
-    //   },
-    // },
+    // Usar esbuild para minificação (mais confiável)
+    minify: "esbuild",
     rollupOptions: {
       output: {
         manualChunks: {
