@@ -53,7 +53,7 @@ const HeroText = () => {
         </div>
       </div>
       {/* Mobile View */}
-      <div className="flex- flex-col space-y-6 md:hidden">
+      <div className="flex flex-col space-y-6 md:hidden px-4">
         <motion.p
           className="text-4xl font-medium"
           variants={variants}
@@ -61,11 +61,11 @@ const HeroText = () => {
           animate="visible"
           transition={{ delay: 1 }}
         >
-          Hi,I&apos;m Lucas
+          Hi, I&apos;m Lucas
         </motion.p>
-        <div>
+        <div className="text-center">
           <motion.p
-            className="text-5xl font-black text-neutral-300"
+            className="text-5xl font-black text-neutral-300 mb-2"
             variants={variants}
             initial="hidden"
             animate="visible"
@@ -74,6 +74,7 @@ const HeroText = () => {
             Building
           </motion.p>
           <motion.div
+            className="min-h-[80px] flex items-center justify-center"
             variants={variants}
             initial="hidden"
             animate="visible"
@@ -81,11 +82,12 @@ const HeroText = () => {
           >
             <FlipWords
               words={words}
-              className="font-bold text-white text-7xl"
+              className="font-bold text-white text-6xl text-center"
+              duration={4000}
             />
           </motion.div>
           <motion.p
-            className="text-4xl font-black text-neutral300"
+            className="text-4xl font-black text-neutral-300"
             variants={variants}
             initial="hidden"
             animate="visible"

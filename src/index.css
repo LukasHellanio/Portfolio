@@ -14,6 +14,43 @@
     transition-duration: 0.01ms !important;
   }
 }
+
+/* Performance optimizations */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  overflow-x: hidden; /* Prevent horizontal scroll */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Hardware acceleration for animations */
+.animate-flipwords,
+.animate-particles,
+.animate-astronaut {
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
+/* Optimize mobile performance */
+@media (max-width: 768px) {
+  .animate-flipwords {
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+  }
+  
+  /* Reduce motion on mobile for better performance */
+  .animate-particles {
+    animation-duration: 2s;
+  }
+}
 @theme {
   --color-primary: #030412;
   --color-midnight: #06091f;
