@@ -3,7 +3,7 @@ import Hero from "./sections/home/Hero";
 import About from "./sections/about/About";
 import Projects from "./sections/projects/Projects";
 import Experiences from "./sections/experiences/Experiences";
-import Skills from "./sections/skills/skills";
+import Skills from "./sections/skills/Skills";
 import Contact from "./sections/contact/Contact";
 
 const App = () => {
