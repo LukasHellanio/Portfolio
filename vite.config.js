@@ -6,13 +6,13 @@ export default defineConfig({
   plugins: [react(), tailwindcss()],
   build: {
     // Otimizações de build
-    minify: "terser",
-    terserOptions: {
-      compress: {
-        drop_console: true,
-        drop_debugger: true,
-      },
-    },
+    minify: "esbuild", // Usar esbuild em vez de terser para evitar problemas
+    // terserOptions: {
+    //   compress: {
+    //     drop_console: true,
+    //     drop_debugger: true,
+    //   },
+    // },
     rollupOptions: {
       output: {
         manualChunks: {
