@@ -19,13 +19,15 @@ export default defineConfig({
           "react-vendor": ["react", "react-dom"],
           motion: ["motion/react"],
           emailjs: ["@emailjs/browser"],
-          three: ["three", "@react-three/fiber", "@react-three/drei"],
+          "three-core": ["three"],
+          "three-react": ["@react-three/fiber", "@react-three/drei"],
+          "three-stdlib": ["three-stdlib"],
         },
       },
     },
     // Otimizar assets
     assetsInlineLimit: 4096,
-    chunkSizeWarningLimit: 1000,
+    chunkSizeWarningLimit: 1500, // Aumentado para Three.js
   },
   // Otimizações de desenvolvimento
   server: {
