@@ -12,6 +12,16 @@ export default defineConfig({
     minify: "esbuild",
     cssCodeSplit: true,
     cssMinify: true,
+    // Resolver problema do useLayoutEffect
+    rollupOptions: {
+      external: [],
+      output: {
+        globals: {
+          'react': 'React',
+          'react-dom': 'ReactDOM'
+        }
+      }
+    },
     // Otimizações de build
     target: "es2015",
     sourcemap: false,
