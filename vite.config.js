@@ -16,10 +16,10 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks: {
-          'react-vendor': ['react', 'react-dom'],
-          'motion': ['motion/react'],
-          'emailjs': ['@emailjs/browser'],
-          'three': ['three', '@react-three/fiber', '@react-three/drei'],
+          "react-vendor": ["react", "react-dom"],
+          motion: ["motion/react"],
+          emailjs: ["@emailjs/browser"],
+          three: ["three", "@react-three/fiber", "@react-three/drei"],
         },
       },
     },
@@ -43,6 +43,6 @@ export default defineConfig({
   },
   // Resolver problema do useLayoutEffect
   define: {
-    global: 'globalThis',
+    global: "globalThis",
   },
 });
