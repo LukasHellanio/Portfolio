@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { motion } from "motion/react";
-import { useSmoothScroll } from "../../hooks/useSmoothScroll";
+import { useNavigation } from "../../hooks/useNavigation";
 
 function Navigation({ onLinkClick }) {
+  const { navigateToSection, isNavigating, loadingSection } = useNavigation();
+
   const navItems = [
     { id: "home", label: "Home" },
     { id: "about", label: "About" },
@@ -11,6 +13,11 @@ function Navigation({ onLinkClick }) {
     { id: "skills", label: "Skills" },
     { id: "contact", label: "Contact" },
   ];
+
+  const handleLinkClick = async (sectionId) => {
+    onLinkClick?.();
+    await navigateToSection(sectionId);
+  };
 
   return (
     <ul className="nav-ul">
@@ -23,16 +30,22 @@ function Navigation({ onLinkClick }) {
           transition={{ delay: index * 0.1 }}
         >
           <motion.button
-            onClick={() => onLinkClick(item.id)}
-            className="nav-link cursor-pointer border-none bg-transparent p-0"
+            onClick={() => handleLinkClick(item.id)}
+            className="nav-link cursor-pointer border-none bg-transparent p-0 relative"
             whileHover={{
               scale: 1.05,
               color: "#ffffff",
             }}
             whileTap={{ scale: 0.95 }}
             transition={{ duration: 0.2 }}
+            disabled={isNavigating}
           >
             {item.label}
+            {isNavigating && loadingSection === item.id && (
+              <span className="absolute -right-6 top-1/2 -translate-y-1/2">
+                <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-royal"></div>
+              </span>
+            )}
           </motion.button>
         </motion.li>
       ))}
@@ -41,10 +54,8 @@ function Navigation({ onLinkClick }) {
 }
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const { scrollToSection } = useSmoothScroll();
 
   const handleLinkClick = (sectionId) => {
-    scrollToSection(sectionId);
     setIsOpen(false);
   };
 

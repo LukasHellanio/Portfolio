@@ -31,8 +31,14 @@
     <link rel="preconnect" href="https://api.emailjs.com" />
     
     <!-- Preload critical resources -->
-    <link rel="preload" href="/src/index.css" as="style" />
+    <link rel="preload" href="/src/styles/critical.css" as="style" />
     <link rel="preload" href="/src/main.jsx" as="script" />
+    
+    <!-- Critical CSS inline -->
+    <style>
+      /* Critical above-the-fold styles */
+      *{box-sizing:border-box}html{scroll-behavior:smooth;font-size:16px}body{margin:0;padding:0;line-height:1.6;color:#fff;background-color:#000;overflow-x:hidden;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.container{width:100%;max-width:1280px;margin:0 auto;padding:0 1rem}.navbar{position:fixed;top:0;left:0;right:0;z-index:50;backdrop-filter:blur(16px);background-color:rgba(0,0,0,.4);border-bottom:1px solid rgba(255,255,255,.1)}.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;position:relative;background:linear-gradient(135deg,#000 0%,#1a1a2e 100%)}.text-heading{font-size:3rem;font-weight:800;line-height:1.2;margin-bottom:1rem;color:#fff}@media (max-width:768px){.text-heading{font-size:2rem}}
+    </style>
   </head>
   <body>
     <div id="root"></div>
