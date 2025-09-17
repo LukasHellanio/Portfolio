@@ -3,7 +3,6 @@ import { Navbar, Footer } from "./components/layout";
 import Hero from "./sections/home/Hero";
 import About from "./sections/about/About";
 import LazySection from "./components/ui/LazySection";
-import FontLoader from "./components/ui/FontLoader";
 
 // Lazy loading para componentes pesados
 const Projects = React.lazy(() => import("./sections/projects/Projects"));
@@ -15,32 +14,30 @@ const Contact = React.lazy(() => import("./sections/contact/Contact"));
 
 const App = () => {
   return (
-    <FontLoader>
-      <div className="container mx-auto max-w-7xl">
-        <Navbar />
-        <Hero />
-        <About />
+    <div className="container mx-auto max-w-7xl">
+      <Navbar />
+      <Hero />
+      <About />
 
-        {/* Lazy loading para componentes pesados */}
-        <LazySection>
-          <Projects />
-        </LazySection>
+      {/* Lazy loading para componentes pesados */}
+      <LazySection>
+        <Projects />
+      </LazySection>
 
-        <LazySection>
-          <Experiences />
-        </LazySection>
+      <LazySection>
+        <Experiences />
+      </LazySection>
 
-        <LazySection>
-          <Skills />
-        </LazySection>
+      <LazySection>
+        <Skills />
+      </LazySection>
 
-        <LazySection>
-          <Contact />
-        </LazySection>
+      <LazySection>
+        <Contact />
+      </LazySection>
 
-        <Footer />
-      </div>
-    </FontLoader>
+      <Footer />
+    </div>
   );
 };
 

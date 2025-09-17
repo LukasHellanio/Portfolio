@@ -6,4 +6,3 @@ export { default as OptimizedImage } from "./OptimizedImage";
 export { default as CopyEmailButton } from "./CopyEmailButton";
 export { Frameworks } from "./Frameworks";
 export { default as LazySection } from "./LazySection";
-export { default as FontLoader } from "./FontLoader";
