@@ -3,71 +3,23 @@ import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
-  plugins: [
-    react(),
-    tailwindcss(),
-  ],
+  plugins: [react(), tailwindcss()],
   build: {
     // Usar esbuild para minificação (mais confiável)
     minify: "esbuild",
     cssCodeSplit: true,
     cssMinify: true,
-    // Resolver problema do useLayoutEffect
-    rollupOptions: {
-      external: [],
-      output: {
-        globals: {
-          'react': 'React',
-          'react-dom': 'ReactDOM'
-        }
-      }
-    },
     // Otimizações de build
     target: "es2015",
     sourcemap: false,
     reportCompressedSize: false,
     rollupOptions: {
       output: {
-        manualChunks: (id) => {
-          // Core React libraries
-          if (id.includes("react") || id.includes("react-dom")) {
-            return "react-vendor";
-          }
-
-          // Animation library
-          if (id.includes("motion")) {
-            return "motion";
-          }
-
-          // Email service
-          if (id.includes("@emailjs")) {
-            return "emailjs";
-          }
-
-          // UI Components
-          if (id.includes("src/components/ui/")) {
-            return "ui-components";
-          }
-
-          // Portfolio Components
-          if (id.includes("src/components/portfolio/")) {
-            return "portfolio-components";
-          }
-
-          // Animations
-          if (id.includes("src/components/animations/")) {
-            return "animations";
-          }
-
-          // Sections
-          if (id.includes("src/sections/")) {
-            return "sections";
-          }
-
-          // Node modules
-          if (id.includes("node_modules")) {
-            return "vendor";
-          }
+        manualChunks: {
+          'react-vendor': ['react', 'react-dom'],
+          'motion': ['motion/react'],
+          'emailjs': ['@emailjs/browser'],
+          'three': ['three', '@react-three/fiber', '@react-three/drei'],
         },
       },
     },
@@ -88,5 +40,9 @@ export default defineConfig({
       // Excluir dependências que não precisam ser pré-bundladas
     ],
     force: false, // Não forçar re-bundling desnecessário
+  },
+  // Resolver problema do useLayoutEffect
+  define: {
+    global: 'globalThis',
   },
 });
