@@ -6,7 +6,7 @@ const SkillItem = ({ skill, index }) => {
     switch (level) {
       case "Basic":
         return "text-red-400";
-      case "Intermediary":
+      case "Intermediate":
         return "text-yellow-400";
       case "Advanced":
         return "text-blue-400";
